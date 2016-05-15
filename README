@@ -4,6 +4,14 @@ GRPC Example Project
 This repo demonstrates a dockerized GRPC+grpc-gateway build process.  It could serve as a template for a project based on grpc, or just a place to see what parts make up such a thing.
 
 
+Quickstart
+----------
+1. `./docker-build.sh` # see section *Build Container*
+2. `./build.sh` # see section *GRPC and grpc-gateway*
+3. `./run.sh` # see section *Running demo programs*
+4. `docker run --net=grpc -v ${PWD}:/build protobufz /build/go-bin/echo-client I know you are, but what am I?`
+
+
 Echo Service
 ------------
 
