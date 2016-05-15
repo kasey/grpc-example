@@ -16,16 +16,17 @@ Echo Service
 ------------
 
 An example Echo service is implemented as a GRPC service, split into:
-`proto/echo.proto`: grpc service description w/ protobuf 
-`server/main.go`: go implementation of the echo server
-`client/main.go`: go implementation of the echo client
-`py_proto/client.py`: python implementation of the python client
+
+* `proto/echo.proto`: grpc service description w/ protobuf
+* `server/main.go`: go implementation of the echo server
+* `client/main.go`: go implementation of the echo client
+* `py_proto/client.py`: python implementation of the python client
 
 
 Build Container
 ---------------
 
-Code generation and binary compilation takes place with the Docker container described by `Dockerfile`.  
+Code generation and binary compilation takes place with the Docker container described by `Dockerfile`.
 
 To build the Docker container, simply run `build-docker.sh`.  This will build the docker image locally in an image tagged `protobufz`, which is the name assumed by `run.sh` and `build.sh`.  `build-docker.sh` will also create a docker network with the name `grpc` which will be used by the example clients for service discovery (in both clients the grpc connect routine uses the hostname `echo-server`, which is what `run.sh` names the `echo-server` container when it runs, making the container discoverable via hostname within the `grpc` bridge network).
 
@@ -56,7 +57,7 @@ Once the build script has finished, observe the following build artifacts:
     * `py_proto/proto/__init__.py`: created by the build script to ensure the module is treated as a module.
   * `go-bin`: `$GOPATH/bin` within the build container is mounted to this directory (created by the build script -- in .gitignore)
 
-At this point you should be able to run the example programs.  
+At this point you should be able to run the example programs.
 
 
 Running demo programs
