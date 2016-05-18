@@ -12,8 +12,8 @@ protoc -I/usr/local/include -I/build -I/go/src -I/go/src/github.com/gengo/grpc-g
 
 # build go client and server binaries
 mkdir -p /build/go-bin
-go build -o /build/go-bin/echo-server github.com/kasey/grpc-example/server
-go build -o /build/go-bin/echo-client github.com/kasey/grpc-example/client
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s' -o /build/go-bin/echo-server github.com/kasey/grpc-example/server
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags '-s' -o /build/go-bin/echo-client github.com/kasey/grpc-example/client
 
 # generate python grpc bindings for the client program
 protoc -I/build -I/go/src/github.com/gengo/grpc-gateway/third_party/googleapis --python_out==Mgoogle/api/annotations.proto=github.com/gengo/grpc-gateway/third_party/googleapis/google/api:/build/py_proto --grpc_out=/build/py_proto --plugin=protoc-gen-grpc=`which grpc_python_plugin` /build/proto/echo.proto

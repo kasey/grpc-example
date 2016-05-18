@@ -1,5 +1,5 @@
 # start the golang grpc server
-docker run -d --net=grpc --name=echo-server -v ${PWD}:/build -p 50053:50051 protobufz /build/go-bin/echo-server
+docker run -d --net=grpc --name=echo-server -p 50051:50051 echo-server
 
 # go client run example:
 # docker run --net=grpc -v ${PWD}:/build protobufz /build/go-bin/echo-client I know you are, but what am I?
